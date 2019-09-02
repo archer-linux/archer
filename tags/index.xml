@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Anarchy Linux</title>
+    <link>https://anarchylinux.org/tags/</link>
+    <description>Recent content in Tags on Anarchy Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 01 Sep 2019 10:25:41 +0200</lastBuildDate>
+    
+	<atom:link href="https://anarchylinux.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>releases</title>
+      <link>https://anarchylinux.org/tags/releases/</link>
+      <pubDate>Sun, 01 Sep 2019 10:25:41 +0200</pubDate>
+      
+      <guid>https://anarchylinux.org/tags/releases/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

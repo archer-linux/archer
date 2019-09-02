@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>releases on Anarchy Linux</title>
+    <link>https://anarchylinux.org/tags/releases/</link>
+    <description>Recent content in releases on Anarchy Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 01 Sep 2019 10:25:41 +0200</lastBuildDate>
+    
+	<atom:link href="https://anarchylinux.org/tags/releases/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Release 1.0.4</title>
+      <link>https://anarchylinux.org/posts/release-104/</link>
+      <pubDate>Sun, 01 Sep 2019 10:25:41 +0200</pubDate>
+      
+      <guid>https://anarchylinux.org/posts/release-104/</guid>
+      <description> On June 8, 2019, Anarchy Linux received its 1.0.4 release, finally. With the upcoming release of 1.0.5, which already has way more changes, we can safely say this was a minor release,
+Changelog:  QT4 was removed from the package list MongoDB was removed from the optional software list A timeout was added to the syslinux config file arch-wiki-cli was removed from the package list  </description>
+    </item>
+    
+  </channel>
+</rss>
