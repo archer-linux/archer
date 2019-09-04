@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="robots" content="index, follow" />
 	<meta name="googlebot" content="index, follow, noarchive" />
-	<title>Anarchy Linux - releases</title>
+	<title>Anarchy Linux - Release v1.0.5</title>
 	<link rel="icon" href="https://anarchylinux.org/favicon.ico" />
 	<meta name="description" content="A simple and intuitive Arch Linux installer" />
 
@@ -13,15 +13,21 @@
 	
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="releases"/>
-<meta name="twitter:description" content="A simple and intuitive Arch Linux installer"/>
+<meta name="twitter:title" content="Release v1.0.5"/>
+<meta name="twitter:description" content="Another Anarchy update, yay!
+1.0.5&rsquo;s changelog is actually quite long, despite being a &ldquo;patch&rdquo; version.
+You can check out the changelog on our release page for a summary or continue reading for a more in-depth look into the changes.
+Firstly we&rsquo;ve completely removed the GUI installer, since it was very outdated and it hasn&rsquo;t been built since like v1.0.0. AFAIK nobody has complained about the lack of GUI builds, but if enough people would like it back, it can be arranged, although we&rsquo;d need some maintainers for it."/>
 
-	<meta property="og:title" content="releases" />
-<meta property="og:description" content="A simple and intuitive Arch Linux installer" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://anarchylinux.org/tags/releases/" />
-
-<meta property="og:updated_time" content="2019-09-04T10:02:34+02:00" />
+	<meta property="og:title" content="Release v1.0.5" />
+<meta property="og:description" content="Another Anarchy update, yay!
+1.0.5&rsquo;s changelog is actually quite long, despite being a &ldquo;patch&rdquo; version.
+You can check out the changelog on our release page for a summary or continue reading for a more in-depth look into the changes.
+Firstly we&rsquo;ve completely removed the GUI installer, since it was very outdated and it hasn&rsquo;t been built since like v1.0.0. AFAIK nobody has complained about the lack of GUI builds, but if enough people would like it back, it can be arranged, although we&rsquo;d need some maintainers for it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://anarchylinux.org/posts/release-105/" />
+<meta property="article:published_time" content="2019-09-04T10:02:34+02:00" />
+<meta property="article:modified_time" content="2019-09-04T10:02:34+02:00" />
 
 
 	
@@ -130,25 +136,19 @@
     </div>
 </nav>
 </header>
-<main class="content">
-	
-
-	
-	<article class="card">
-    <header class="card__header">
-        <h1 class="card__header__title">
-            <a href="https://anarchylinux.org/posts/release-105/" class="card__header__link" alt="Release v1.0.5.">
-                Release v1.0.5
-            </a>
-        </h1>
+<article class="post">
+    <header class="post__header">
+        <h1 class="post__title">Release v1.0.5</h1>
         
         
-        <p class="card__header__date date">September 4, 2019</p>
+        
+        <p class="post__date date">September 4, 2019</p>
         
         
     </header>
 
-    <main class="card__body">
+    
+    <main class="post__body">
         <p>Another Anarchy update, yay!</p>
 
 <p>1.0.5&rsquo;s changelog is actually quite long, despite being a &ldquo;patch&rdquo; version.</p>
@@ -156,10 +156,41 @@
 <p>You can check out the changelog <a href="https://github.com/deadhead420/anarchy-linux/releases/tag/v1.0.5">on our release page</a> for a summary or continue reading for a more in-depth look into the changes.</p>
 
 <p>Firstly we&rsquo;ve completely removed the GUI installer, since it was very outdated and it hasn&rsquo;t been built since like v1.0.0.
-AFAIK nobody has complained about the lack of GUI builds, but if enough people would like …</p>
-    </main>
+AFAIK nobody has complained about the lack of GUI builds, but if enough people would like it back, it can be arranged, although we&rsquo;d need some maintainers for it.
+This does not affect the installation of DEs and WMs, you can still choose all the ones you could before, it&rsquo;s just that the installation takes place in a terminal.</p>
 
-    <footer class="card__footer">
+<p>We&rsquo;ve also refactored the <code>anarchy-creator.sh</code> script to more closely follow bash best practices
+and we&rsquo;ve renamed it to <code>iso-generator.sh</code> to make it less confusing, since anarchy-creator and anarchy-installer are similarly named, but do completely different things.
+Maybe we&rsquo;ll move the anarchy-installer script to somewhere else at some point.</p>
+
+<p>Something quite important was also added in v1.0.5:
+We&rsquo;ve started generating proper checkums.
+You should now be able to use <code>sha256sum</code> to check if the image was properly downloaded.</p>
+
+<p><code>arch-wiki(-cli)</code> was also completely removed in this version.
+To be fair, it was removed in v1.0.4 already, but the menu option still existed and didn&rsquo;t work, so now it&rsquo;s finally gone.</p>
+
+<p>For those of you who want to compile your own Anarchy installers,
+we&rsquo;ve made the script more verbose, with more helpful info and proper error exits.</p>
+
+<p>French translations were updated, GREP_OPTIONS was removed from .zshrc,
+OpenJDK7 was replaced by OpenJDK8 in the optional software menu and OpenJDK11 &amp; 12 were added as well.
+Also in the list of added packages were <code>youtube-dl</code> and <code>openssh</code>
+(which was added by default to our quick server installations)</p>
+
+<p>The insertion of modules into <code>mkinitcpio.conf</code> was fixed and the issue of LUKS-encryped XFS installations not booting was resolved as well.</p>
+
+<p>On the Github side of things we&rsquo;ve also updated the README and have added issue and pull request templates - please use them.</p>
+
+<p>A <a href="https://github.com/deadhead420/anarchy-linux/blob/master/CONTRIBUTING.md">contributing guide</a> was also added, which can give you some ideas on how to contribute to the project.</p>
+
+<p>Well, that just about sums it up, see you when the next release comes out ;)</p>
+
+    </main>
+    
+
+    
+    <footer class="post__footer">
         
 <ul class="tags">
     
@@ -174,62 +205,8 @@ AFAIK nobody has complained about the lack of GUI builds, but if enough people w
 
 
     </footer>
+    
 </article>
-	
-	<article class="card">
-    <header class="card__header">
-        <h1 class="card__header__title">
-            <a href="https://anarchylinux.org/posts/release-104/" class="card__header__link" alt="Release 1.0.4.">
-                Release 1.0.4
-            </a>
-        </h1>
-        
-        
-        <p class="card__header__date date">September 1, 2019</p>
-        
-        
-    </header>
-
-    <main class="card__body">
-        
-
-<p>On June 8, 2019, Anarchy Linux received its <a href="https://github.com/deadhead420/anarchy-linux/releases/tag/1.0.4">1.0.4 release</a>, finally.
-With the upcoming release of 1.0.5, which already has way more changes,
-we can safely say this was a minor release,</p>
-
-<h3 id="changelog">Changelog:</h3>
-
-<ul>
-<li>QT4 was removed from the package list</li>
-<li>MongoDB was removed from the optional software list</li>
-<li>A timeout was added to the syslinux config file</li>
-<li><code>arch-wiki-cli</code> was removed from the package list</li>
-</ul>
-
-    </main>
-
-    <footer class="card__footer">
-        
-<ul class="tags">
-    
-    
-    <li class="tags__tag">
-        <a href="https://anarchylinux.org/tags/releases/" class="tag__link" alt="releases.">
-            #releases
-        </a>
-    </li>
-    
-</ul>
-
-
-    </footer>
-</article>
-	
-
-	
-
-
-</main>
 <footer class="footer">
     
 
