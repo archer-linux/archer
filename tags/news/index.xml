@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>news on Anarchy Linux</title>
+    <link>https://anarchylinux.org/tags/news/</link>
+    <description>Recent content in news on Anarchy Linux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 10 Sep 2019 15:07:18 +0200</lastBuildDate>
+    
+	<atom:link href="https://anarchylinux.org/tags/news/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Matrix</title>
+      <link>https://anarchylinux.org/posts/matrix/</link>
+      <pubDate>Tue, 10 Sep 2019 15:07:18 +0200</pubDate>
+      
+      <guid>https://anarchylinux.org/posts/matrix/</guid>
+      <description>tl;dr Join our Matrix chat group using Riot.im.
+With the renewal of the Anarchy brand/workflow/mission we have come to realise that even though there aren&amp;rsquo;t many of us working on Anarchy, we didn&amp;rsquo;t have a good way to communicate with one another. We also wanted our users to be able to voice their opinions and talk about the project in a more chatty setting, not only through Github issues.
+We discussed using the very popular Telegram messaging platform, but have later decided to use the Matrix network/platform, since it was completely open source (unlike Telegram&amp;rsquo;s infrastructure) and decentralised, allowing us to move providers and possibly self-host if needed.</description>
+    </item>
+    
+  </channel>
+</rss>
