@@ -5,10 +5,19 @@
     <link>https://anarchylinux.org/tags/</link>
     <description>Recent content in Tags on Anarchy Linux</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 04 Sep 2019 10:02:34 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 12 Sep 2019 20:53:22 -0300</lastBuildDate>
     
 	<atom:link href="https://anarchylinux.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>news</title>
+      <link>https://anarchylinux.org/tags/news/</link>
+      <pubDate>Thu, 12 Sep 2019 20:53:22 -0300</pubDate>
+      
+      <guid>https://anarchylinux.org/tags/news/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>releases</title>
