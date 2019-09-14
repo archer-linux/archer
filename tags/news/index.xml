@@ -22,5 +22,15 @@ Together we can make Anarchy more than just an installer!
 We&amp;rsquo;re hoping to see you soon!</description>
     </item>
     
+    <item>
+      <title>New Website</title>
+      <link>https://anarchylinux.org/posts/new-website/</link>
+      <pubDate>Sun, 01 Sep 2019 09:25:41 +0200</pubDate>
+      
+      <guid>https://anarchylinux.org/posts/new-website/</guid>
+      <description>You&amp;rsquo;ve stumbled upon our revamped website. It was built to be modern and fast using the Hugo static website generator and the Terrassa theme.
+If you haven&amp;rsquo;t already, check out our Github project page.</description>
+    </item>
+    
   </channel>
 </rss>
