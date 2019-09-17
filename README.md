@@ -11,23 +11,23 @@
 </p>
 
 <p align="center">
-    <a href="https://www.anarchylinux.org/">Home page</a> | 
-    <a href="https://github.com/deadhead420/anarchy-linux/releases">Download</a> |
+    <a href="https://archer.sh/">Home page</a> | 
+    <a href="https://github.com/archer-linux/archer/releases">Download</a> |
     <a href="https://t.me/anarchy_linux">Telegram group</a>
 </p>
 </html>
 
 ## About
 
-Anarchy Linux is an Arch Linux installer providing a hassle-free pure installation and polished user experience.
+Archer Linux is an Arch Linux installer providing a hassle-free pure installation and polished user experience.
 Every aspect of the install is taken into account from partitioning and general system configuration,
 to installing your favorite DE/WM and additional software from the official Arch Linux repos.
 
-The Anarchy installer is intended to provide both novice and experienced Linux users a simple and pain free way to install Arch Linux.
+The Archer installer is intended to provide both novice and experienced Linux users a simple and pain free way to install Arch Linux.
 Install when you want it, where you want it, and how you want it.
-That is the Anarchy philosophy.
+That is the Archer philosophy.
 
-Anarchy aims to provide a polished and pure Arch install while leaving open every possible configuration avenue for the user to choose from.
+Archer aims to provide a polished and pure Arch install while leaving open every possible configuration avenue for the user to choose from.
 
 
 ## Screenshots
