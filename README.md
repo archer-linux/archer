@@ -5,7 +5,7 @@
 <h2 align="center">Archer Linux</h2>
 
 <p align="center">
-    A simple and intuitive Arch Linux installer.
+    A simple and intuitive Arch Linux installer. Forked from <a href="https://github.com/deadhead420/anarchy-linux">Anarchy Linux</a>
     <br>
     Archer: quick, easy, and straight forward, following the "Keep it simple stupid" principle.
 </p>
