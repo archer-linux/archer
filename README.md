@@ -1,13 +1,13 @@
 <html lang="en">
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/10241434/43771874-12ff77d8-9a73-11e8-99af-dc067a07dcd7.png" alt="Anarchy logo">
+    <img src="https://raw.githubusercontent.com/archer-linux/branding/master/logo/logo-circular-white.png" alt="Archer logo" width="200">
 </p>
-<h2 align="center">Anarchy Linux</h2>
+<h2 align="center">Archer Linux</h2>
 
 <p align="center">
     A simple and intuitive Arch Linux installer.
     <br>
-    Anarchy: quick, easy, and straight forward, following the "Keep it simple stupid" principle.
+    Archer: quick, easy, and straight forward, following the "Keep it simple stupid" principle.
 </p>
 
 <p align="center">
@@ -131,21 +131,21 @@ The installer has [AUR](https://aur.archlinux.org/) support enabled by default u
 
 ### **Verifying the checksums**
 
-It's recommended that you verify the checksums before using Anarchy.
+It's recommended that you verify the checksums before using Archer.
 
 On Linux, this is a very simple thing to do.
 Run the following command in a terminal:
 
-`sha256sum -c anarchy-(version)-(architecture).iso.sha256sum`
+`sha256sum -c archer-(version)-(architecture).iso.sha256sum`
 
 If the image (ISO file) was fully and correctly downloaded you should see something like this:
 
-`anarchy-1.0.5-x86_64.iso: OK`
+`archer-1.0.5-x86_64.iso: OK`
 
 On Windows you have to get some external tools.
 An example is [sha256sum.exe](http://www.labtestproject.com/files/win/sha256sum/sha256sum.exe), which you can run in cmd like so:
 
-`sha256sum.exe anarchy-(version)-(architecture).iso`
+`sha256sum.exe archer-(version)-(architecture).iso`
 
 Note that unlike its Linux counterpart, it will only display the sha256 checksum of the image,
 not compare it with the generated checksums as well.
@@ -153,8 +153,8 @@ So make sure to open the .sha256sum file in a text editor and compare the hashes
 
 ### **Windows**
 
-The best tool to flash Anarchy Linux to a USB is [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/).
-Download it, choose the Anarchy image (ISO), select the wanted USB and press write.
+The best tool to flash Archer Linux to a USB is [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/).
+Download it, choose the Archer image (ISO), select the wanted USB and press write.
 
 THIS WILL COMPLETELY WIPE YOUR USB! YOU HAVE BEEN WARNED.
 
@@ -167,7 +167,7 @@ DON'T COPY AND PASTE THE TEXT BELOW AS ANY DISK YOU SELECT WILL BE COMPLETELY WI
 Replace `x` with your USB device's letter (use `lsblk` to check which letter it was assigned, usually it's "b"):
 
 ```
-sudo dd if=./<anarchy-image.iso> of=/dev/sdx bs=4M status=progress && sync
+sudo dd if=./<archer-image.iso> of=/dev/sdx bs=4M status=progress && sync
 ```
 
 You can also use GUI based software such as [Etcher](https://www.balena.io/etcher/).
