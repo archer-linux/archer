@@ -1,1 +1,5 @@
+title: "Archer.sh"
+description: A simple and intuitive Arch Linux installer. Forked from Anarchy Linux
+show_buttons: true
+google_analytics:
 theme: jekyll-theme-cayman
