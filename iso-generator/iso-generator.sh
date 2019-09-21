@@ -79,10 +79,8 @@ init() {
 check_dependencies() { #prev: check_depends
     echo "Checking dependencies"
 
-    source ./dependencies.txt
-
-    for current_dependency in $dependencies; do
-        pacman -Qi $current_dependency >/dev/null 2>&1
+    for current_dependency in $(cat dependencies.txt); do
+        pacman -Qi $current_dependency
     if [ "$?" -eq "0" ]; then
         found_dependencies+="$current_dependency " # found_dependencies, in case we need a list of deps present before progressing past this point.
     else

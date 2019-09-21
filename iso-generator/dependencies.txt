@@ -1,3 +1,13 @@
-dependencies="wget xorriso mksquashfs 7z arch-chroot xxd gtk3-demo rankmirrors" # These are dependencies required for the building of the iso
-
-dependencies+="pkg-config patch gcc make binutils" # These are the packages we need from base-devel, but instead of installing base-devel this is more efficient.
+wget
+libisoburn
+squashfs-tools
+p7zip
+arch-install-scripts
+xxd
+gtk3
+pacman-contrib
+pkgconf
+patch
+gcc
+make
+binutils
