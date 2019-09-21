@@ -26,6 +26,7 @@
       <img class="project-logo" src=assets/logo.svg>
       <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+      <h2 class="project-subtagline">{{ page.subdescription | default: site.subdescription }}</h2>
       {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
       {% endif %}
@@ -33,7 +34,7 @@
         <a href="{{ site.github.releases_url  }}" class="btn">Download</a>
         <a href="mailto:root@archer.sh" class="btn">Contact</a>
         <a href="{{ site.github.wiki_url }}" class="btn">Wiki</a>
-        <a href="Not_Yet_:^)" class="btn">Matrix</a>
+        <a href="https://riot.im/app/#/room/!fJlponOMkLnSrGZABI:matrix.org?via=matrix.org" class="btn">Matrix</a>
       {% endif %}
     </header>
 

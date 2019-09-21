@@ -159,6 +159,42 @@ a {
   }
 }
 
+.project-tagline {
+  margin-bottom: 0rem;
+  font-weight: normal;
+  opacity: 0.7;
+
+  @include large {
+    font-size: 1.25rem;
+  }
+
+  @include medium {
+    font-size: 1.15rem;
+  }
+
+  @include small {
+    font-size: 1rem;
+  }
+}
+
+.project-subtagline {
+  margin-bottom: 2rem;
+  font-weight: normal;
+  opacity: 0.7;
+
+  @include large {
+    font-size: 1.125rem;
+  }
+
+  @include medium {
+    font-size: 1.035rem;
+  }
+
+  @include small {
+    font-size: 0.9rem;
+  }
+}
+
 .project-logo {
     max-width: 30%;
     height: auto;
