@@ -151,8 +151,7 @@ local_repo_builds() { # prev: aur_builds
     for pkg in $(echo "${local_aur_packages[@]}"); do
         wget -qO- "${aur_snapshot_link}/${pkg}.tar.gz" | tar xz -C /tmp
         cd /tmp/"${pkg}" || exit
-         makepkg -si --noconfirm --nocheck;;
-        fi
+         makepkg -si --noconfirm --nocheck
     done
 
     echo "Done"
