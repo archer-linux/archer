@@ -153,7 +153,7 @@ local_repo_builds() { # prev: aur_builds
             wget -qO- "${aur_snapshot_link}/${pkg}.tar.gz" | tar xz -C /tmp
             cd /tmp/"${pkg}" || exit
             case "${pkg}" in
-                perl-*|numix-*) makepkg -si --needed --noconfirm ;;
+                perl-*|numix-*) makepkg -si --noconfirm ;;
                 *) makepkg -s ;;
             esac
         fi

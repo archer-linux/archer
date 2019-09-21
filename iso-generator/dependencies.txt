@@ -12,3 +12,4 @@ gcc
 make
 binutils
 file
+go
