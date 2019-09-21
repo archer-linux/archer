@@ -11,3 +11,4 @@ patch
 gcc
 make
 binutils
+file
