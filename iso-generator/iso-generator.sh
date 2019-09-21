@@ -4,17 +4,22 @@
 # shellcheck disable=SC2155
 
 ###############################################################
-### Anarchy Linux Install Script
+### Archer Linux Install Script
 ### iso-generator.sh
 ###
 ### Copyright (C) 2018 Dylan Schacht
+### Copyright (C) 2019 MC archer_dev
 ###
-### By: Dylan Schacht (deadhead)
+### By: Dylan Schacht (deadhead) 
 ### Email: deadhead3492@gmail.com
 ### Webpage: https://anarchylinux.org
 ###
+### By: MC - archer_dev
+### Email: root@archer.sh
+### Webpage: https://archer.sh
+###
 ### Any questions, comments, or bug reports may be sent to above
-### email address. Enjoy, and keep on using Anarchy.
+### email address. Enjoy, and keep on using Archer.
 ###
 ### License: GPL v2.0
 ###############################################################
@@ -34,15 +39,15 @@
 # Clears the screen and adds a banner
 prettify() {
     clear
-    echo "-- Anarchy Linux --"
+    echo "-- Archer Linux --"
     echo ""
 }
 
 set_version() {
     # Label must be 11 characters long
-    anarchy_iso_label="ANARCHYV105" # prev: iso_label
-    anarchy_iso_release="1.0.5" # prev: iso_rel
-    anarchy_iso_name="anarchy-${anarchy_iso_release}-${system_architecture}.iso" # prev: version
+    archer_iso_label="ARCHERV105" # prev: iso_label
+    archer_iso_release="1.0.5" # prev: iso_rel
+    archer_iso_name="archer-${archer_iso_release}-${system_architecture}.iso" # prev: version
 }
 
 init() {
@@ -183,56 +188,56 @@ copy_config_files() { # prev: build_conf
     echo "Done"
     echo ""
 
-    echo "Copying Anarchy files ..."
+    echo "Copying Archer files ..."
     # Copy over vconsole.conf (sets font at boot), locale.gen (enables locale(s) for font) & uvesafb.conf
     sudo cp "${working_dir}"/etc/vconsole.conf "${working_dir}"/etc/locale.gen "${squashfs}"/etc/
-    sudo arch-chroot "${squashfs}" /bin/bash locale-gen
+    sudo fakechroot "${squashfs}" /bin/bash locale-gen
 
-    # Copy over main Anarchy config and installer script, make them executable
-    sudo cp "${working_dir}"/etc/anarchy.conf "${squashfs}"/etc/
-    sudo cp "${working_dir}"/anarchy-installer.sh "${squashfs}"/usr/bin/anarchy
+    # Copy over main Archer config and installer script, make them executable
+    sudo cp "${working_dir}"/etc/archer.conf "${squashfs}"/etc/
+    sudo cp "${working_dir}"/archer-installer.sh "${squashfs}"/usr/bin/archer
     sudo cp "${working_dir}"/extra/sysinfo "${working_dir}"/extra/iptest "${squashfs}"/usr/bin/
-    sudo chmod +x "${squashfs}"/usr/bin/anarchy "${squashfs}"/usr/bin/sysinfo "${squashfs}"/usr/bin/iptest
+    sudo chmod +x "${squashfs}"/usr/bin/archer "${squashfs}"/usr/bin/sysinfo "${squashfs}"/usr/bin/iptest
 
-    # Create Anarchy and lang directories, copy over all lang files
-    sudo mkdir -p "${squashfs}"/usr/share/anarchy/lang "${squashfs}"/usr/share/anarchy/extra "${squashfs}"/usr/share/anarchy/boot "${squashfs}"/usr/share/anarchy/etc
-    sudo cp "${working_dir}"/lang/* "${squashfs}"/usr/share/anarchy/lang/
+    # Create Archer and lang directories, copy over all lang files
+    sudo mkdir -p "${squashfs}"/usr/share/archer/lang "${squashfs}"/usr/share/archer/extra "${squashfs}"/usr/share/archer/boot "${squashfs}"/usr/share/archer/etc
+    sudo cp "${working_dir}"/lang/* "${squashfs}"/usr/share/archer/lang/
 
     # Create shell function library, copy /lib to squashfs-root
-    sudo mkdir "${squashfs}"/usr/lib/anarchy
-    sudo cp "${working_dir}"/lib/* "${squashfs}"/usr/lib/anarchy/
+    sudo mkdir "${squashfs}"/usr/lib/archer
+    sudo cp "${working_dir}"/lib/* "${squashfs}"/usr/lib/archer/
 
     # Copy over extra files (dotfiles, desktop configurations, help file, issue file, hostname file)
     sudo rm "${squashfs}"/root/install.txt
     sudo cp "${working_dir}"/extra/shellrc/.zshrc "${squashfs}"/root/
     sudo cp "${working_dir}"/extra/.help "${working_dir}"/extra/.dialogrc "${squashfs}"/root/
     sudo cp "${working_dir}"/extra/shellrc/.zshrc "${squashfs}"/etc/zsh/zshrc
-    sudo cp -r "${working_dir}"/extra/shellrc/. "${squashfs}"/usr/share/anarchy/extra/
-    sudo cp -r "${working_dir}"/extra/desktop "${working_dir}"/extra/wallpapers "${working_dir}"/extra/fonts "${working_dir}"/extra/anarchy-icon.png "${squashfs}"/usr/share/anarchy/extra/
+    sudo cp -r "${working_dir}"/extra/shellrc/. "${squashfs}"/usr/share/archer/extra/
+    sudo cp -r "${working_dir}"/extra/desktop "${working_dir}"/extra/wallpapers "${working_dir}"/extra/fonts "${working_dir}"/extra/archer-icon.png "${squashfs}"/usr/share/archer/extra/
     cat "${working_dir}"/extra/.helprc | sudo tee -a "${squashfs}"/root/.zshrc >/dev/null
     sudo cp "${working_dir}"/etc/hostname "${working_dir}"/etc/issue_cli "${working_dir}"/etc/lsb-release "${working_dir}"/etc/os-release "${squashfs}"/etc/
-    sudo cp -r "${working_dir}"/boot/splash.png "${working_dir}"/boot/loader/ "${squashfs}"/usr/share/anarchy/boot/
-    sudo cp "${working_dir}"/etc/nvidia340.xx "${squashfs}"/usr/share/anarchy/etc/
+    sudo cp -r "${working_dir}"/boot/splash.png "${working_dir}"/boot/loader/ "${squashfs}"/usr/share/archer/boot/
+    sudo cp "${working_dir}"/etc/nvidia340.xx "${squashfs}"/usr/share/archer/etc/
 
     # Copy over built packages and create repository
-    sudo mkdir "${custom_iso}"/arch/"${system_architecture}"/squashfs-root/usr/share/anarchy/pkg
+    sudo mkdir "${custom_iso}"/arch/"${system_architecture}"/squashfs-root/usr/share/archer/pkg
 
     for pkg in $(echo "${local_aur_packages[@]}"); do
-        sudo cp /tmp/"${pkg}"/*.pkg.tar.xz "${squashfs}"/usr/share/anarchy/pkg/
+        sudo cp /tmp/"${pkg}"/*.pkg.tar.xz "${squashfs}"/usr/share/archer/pkg/
     done
 
-    cd "${squashfs}"/usr/share/anarchy/pkg || exit
-    sudo repo-add anarchy-local.db.tar.gz *.pkg.tar.xz
-    echo -e "\n[anarchy-local]\nServer = file:///usr/share/anarchy/pkg\nSigLevel = Never" | sudo tee -a "${squashfs}"/etc/pacman.conf >/dev/null
+    cd "${squashfs}"/usr/share/archer/pkg || exit
+    sudo repo-add archer-local.db.tar.gz *.pkg.tar.xz
+    echo -e "\n[archer-local]\nServer = file:///usr/share/archer/pkg\nSigLevel = Never" | sudo tee -a "${squashfs}"/etc/pacman.conf >/dev/null
     cd "${working_dir}" || exit
 
     if [[ "${system_architecture}" == "i686" ]]; then
         sudo rm -r "${squashfs}"/root/.gnupg
         sudo rm -r "${squashfs}"/etc/pacman.d/gnupg
-        sudo linux32 arch-chroot "${squashfs}" dirmngr </dev/null
-        sudo linux32 arch-chroot "${squashfs}" pacman-key --init
-        sudo linux32 arch-chroot "${squashfs}" pacman-key --populate archlinux32
-        sudo linux32 arch-chroot "${squashfs}" pacman-key --refresh-keys
+        sudo linux32 fakechroot "${squashfs}" dirmngr </dev/null
+        sudo linux32 fakechroot "${squashfs}" pacman-key --init
+        sudo linux32 fakechroot "${squashfs}" pacman-key --populate archlinux32
+        sudo linux32 fakechroot "${squashfs}" pacman-key --refresh-keys
     fi
     echo "Done"
     echo ""
@@ -266,16 +271,16 @@ configure_boot() {
     echo "Configuring boot ..."
     arch_iso_label=$(<"${custom_iso}"/loader/entries/archiso-x86_64.conf awk 'NR==6{print $NF}' | sed 's/.*=//')
     arch_iso_hex=$(<<<"${arch_iso_label}" xxd -p)
-    anarchy_iso_hex=$(<<<"${anarchy_iso_label}" xxd -p)
+    archer_iso_hex=$(<<<"${archer_iso_label}" xxd -p)
     cp "${working_dir}"/boot/splash.png "${custom_iso}"/arch/boot/syslinux/
     cp "${working_dir}"/boot/iso/archiso_head.cfg "${custom_iso}"/arch/boot/syslinux/
-    sed -i "s/${arch_iso_label}/${anarchy_iso_label}/;s/Arch Linux archiso/Anarchy Linux/" "${custom_iso}"/loader/entries/archiso-x86_64.conf
-    sed -i "s/${arch_iso_label}/${anarchy_iso_label}/;s/Arch Linux/Anarchy Linux/" "${custom_iso}"/arch/boot/syslinux/archiso_sys.cfg
-    sed -i "s/${arch_iso_label}/${anarchy_iso_label}/;s/Arch Linux/Anarchy Linux/" "${custom_iso}"/arch/boot/syslinux/archiso_pxe.cfg
+    sed -i "s/${arch_iso_label}/${archer_iso_label}/;s/Arch Linux archiso/Archer Linux/" "${custom_iso}"/loader/entries/archiso-x86_64.conf
+    sed -i "s/${arch_iso_label}/${archer_iso_label}/;s/Arch Linux/Archer Linux/" "${custom_iso}"/arch/boot/syslinux/archiso_sys.cfg
+    sed -i "s/${arch_iso_label}/${archer_iso_label}/;s/Arch Linux/Archer Linux/" "${custom_iso}"/arch/boot/syslinux/archiso_pxe.cfg
     cd "${custom_iso}"/EFI/archiso/ || exit
-    echo -e "Replacing label hex in efiboot.img...\n${arch_iso_label} ${arch_iso_hex} > ${anarchy_iso_label} ${anarchy_iso_hex}"
-    xxd -c 256 -p efiboot.img | sed "s/${arch_iso_hex}/${anarchy_iso_hex}/" | xxd -r -p > efiboot1.img
-    if ! (xxd -c 256 -p efiboot1.img | grep "${anarchy_iso_hex}" &>/dev/null); then
+    echo -e "Replacing label hex in efiboot.img...\n${arch_iso_label} ${arch_iso_hex} > ${archer_iso_label} ${archer_iso_hex}"
+    xxd -c 256 -p efiboot.img | sed "s/${arch_iso_hex}/${archer_iso_hex}/" | xxd -r -p > efiboot1.img
+    if ! (xxd -c 256 -p efiboot1.img | grep "${archer_iso_hex}" &>/dev/null); then
         echo "\nError: failed to replace label hex in efiboot.img"
         echo "Press any key to continue." ; read input
     fi
@@ -285,12 +290,12 @@ configure_boot() {
 }
 
 create_iso() {
-    echo "Creating new Anarchy Linux image ..."
+    echo "Creating new Archer Linux image ..."
     cd "${working_dir}" || exit
     xorriso -as mkisofs \
     -iso-level 3 \
     -full-iso9660-filenames \
-    -volid "${anarchy_iso_label}" \
+    -volid "${archer_iso_label}" \
     -eltorito-boot isolinux/isolinux.bin \
     -eltorito-catalog isolinux/boot.cat \
     -no-emul-boot -boot-load-size 4 -boot-info-table \
@@ -298,7 +303,7 @@ create_iso() {
     -eltorito-alt-boot \
     -e EFI/archiso/efiboot.img \
     -no-emul-boot -isohybrid-gpt-basdat \
-    -output "${anarchy_iso_name}" \
+    -output "${archer_iso_name}" \
     "${custom_iso}"
 
     if [[ "$?" -eq "0" ]]; then
@@ -312,8 +317,8 @@ create_iso() {
 
 generate_checksums() {
     echo "Generating image checksums..."
-    local sha_256_sum=$(sha256sum "${anarchy_iso_name}")
-    echo "${sha_256_sum}" > "${anarchy_iso_name}".sha256sum
+    local sha_256_sum=$(sha256sum "${archer_iso_name}")
+    echo "${sha_256_sum}" > "${archer_iso_name}".sha256sum
     echo "Done"
     echo ""
 }
@@ -354,7 +359,7 @@ while (true); do
             build_system
             configure_boot
             create_iso
-            echo "${anarchy_iso_name} image generated successfully."
+            echo "${archer_iso_name} image generated successfully."
             exit 0
         ;;
     esac
