@@ -26,7 +26,7 @@
 # * Exit 4: Failed to create iso (create_iso)
 
 # Exit on error
-set -o errexit
+#set -o errexit
 
 # Enable tracing of what gets executed
 #set -o xtrace
