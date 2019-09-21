@@ -79,7 +79,7 @@ init() {
 check_dependencies() { #prev: check_depends
     echo "Checking dependencies"
 
-    source ./iso-generator/dependencies.txt
+    source ./dependencies.txt
 
     for current_dependency in $dependencies; do
         pacman -Qi $current_dependency >/dev/null 2>&1
