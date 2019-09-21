@@ -89,17 +89,10 @@ check_dependencies() { #prev: check_depends
     done
 
     if [ -n "$missing_dependencies" ]; then
-        echo -en "Missing dependencies: ${missing_dependencies}\n\nInstall missing dependencies now? [y/N]: "
-        read -r input
-
-        case ${input} in
-            y|Y) sudo pacman -Sy ${missing_dependencies} ;;
-            *) echo "Error: Missing dependencies, exiting."
-            exit 1
-            ;;
-        esac
+        echo -en "Missing dependencies: ${missing_dependencies}\n\nInstalling them now"
+        sudo pacman -Sy --noconfirm ${missing_dependencies}
     fi
-    echo "Done"
+    echo "Done installing packages"
     echo ""
 }
 
@@ -119,25 +112,11 @@ update_arch_iso() { # prev: update_iso
     iso_date=$(<<<"${arch_iso_link}" sed 's!.*/!!')
     if [[ "${iso_date}" != "${local_arch_iso}" ]]; then
         if [[ -z "${local_arch_iso}" ]]; then
-            echo -en "\nNo Arch Linux image found under ${working_dir}\n\nDownload it? [y/N]: "
-            read -r input
-
-            case "${input}" in
-                y|Y) update=true ;;
-                *) echo "Error: anarchy-creator requires an Arch Linux image located in: ${working_dir}, exiting."
-                exit 2
-                ;;
-            esac
+            echo -en "\nNo Arch Linux image found under ${working_dir}\n\n. Downloading it now: "
+            update=true
         else
-            echo -en "Updated Arch Linux image available: ${arch_iso_latest}\n Download it? [y/N]: "
-            read -r input
-
-            case "${input}" in
-                y|Y) update=true ;;
-                n|N) echo -e "Using old image: ${local_arch_iso}"
-                sleep 1
-                ;;
-            esac
+            echo -en "Updated Arch Linux image available: ${arch_iso_latest}\n. Downloading it now "
+            update=true
         fi
 
         if "${update}" ; then
@@ -159,7 +138,7 @@ update_arch_iso() { # prev: update_iso
 
 local_repo_builds() { # prev: aur_builds
     # Update pacman databases
-    sudo pacman -Sy
+    sudo pacman -Sy --noconfirm
 
     echo "Building AUR packages for local repo ..."
 
