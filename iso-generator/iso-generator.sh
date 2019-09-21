@@ -47,7 +47,7 @@ set_version() {
 
 init() {
     # Location variables
-    working_dir=$(pwd) # prev: aa
+    working_dir=$(dirname "$(pwd)") # prev: aa ## This is the pwd, but up one.
     custom_iso="${working_dir}"/customiso # prev: customiso
     squashfs="${custom_iso}"/arch/"${system_architecture}"/squashfs-root # prev: sq
 
@@ -76,22 +76,26 @@ init() {
     local_repo_builds
 }
 
-check_dependencies() { # prev: check_depends
-    echo "Checking dependencies ..."
-    if [[ ! -f /usr/bin/wget ]]; then dependencies="$dependencies wget "; fi
-    if [[ ! -f /usr/bin/xorriso ]]; then dependencies+="libisoburn "; fi
-    if [[ ! -f /usr/bin/mksquashfs ]]; then dependencies+="squashfs-tools "; fi
-    if [[ ! -f /usr/bin/7z ]]; then dependencies+="p7zip " ; fi
-    if [[ ! -f /usr/bin/arch-chroot ]]; then dependencies+="arch-install-scripts "; fi
-    if [[ ! -f /usr/bin/xxd ]]; then dependencies+="xxd "; fi
-    if [[ ! -f /usr/bin/gtk3-demo ]]; then dependencies+="gtk3 "; fi
-    if [[ ! -f /usr/bin/rankmirrors ]]; then dependencies+="pacman-contrib "; fi
-    if [[ ! -z "$dependencies" ]]; then
-        echo -en "Missing dependencies: ${dependencies}\n\nInstall missing dependencies now? [y/N]: "
+check_dependencies() { #prev: check_depends
+    echo "Checking dependencies"
+
+    source ./iso-generator/dependencies.txt
+
+    for current_dependency in $dependencies; do
+        pacman -Qi $current_dependency >/dev/null 2>&1
+    if [ "$?" -eq "0" ]; then
+        found_dependencies+="$current_dependency " # found_dependencies, in case we need a list of deps present before progressing past this point.
+    else
+        missing_dependencies+="$current_dependency "
+    fi
+    done
+
+    if [ -n "$missing_dependencies" ]; then
+        echo -en "Missing dependencies: ${missing_dependencies}\n\nInstall missing dependencies now? [y/N]: "
         read -r input
 
         case ${input} in
-            y|Y) sudo pacman -Sy ${dependencies} ;;
+            y|Y) sudo pacman -Sy ${missing_dependencies} ;;
             *) echo "Error: Missing dependencies, exiting."
             exit 1
             ;;
