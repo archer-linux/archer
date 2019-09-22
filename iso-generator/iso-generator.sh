@@ -286,7 +286,7 @@ configure_boot() {
 
 create_iso() {
     echo "Creating new Archer Linux image ..."
-    cd "${working_dir}" || exit
+    cd "${working_dir}" && mkdir build && cd build || exit
     xorriso -as mkisofs \
     -iso-level 3 \
     -full-iso9660-filenames \
