@@ -11,7 +11,7 @@ Write all your text below the comments or delete them if you want.
 
 ## Basic info:
 
-**Anarchy version**:
+**Archer version**:
 
 **Installation method (VM/Host)**:
 

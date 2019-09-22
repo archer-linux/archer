@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 ###############################################################
-### Anarchy Linux Install Script
+### Archer Linux Install Script
 ### menus.sh
 ###
 ### Copyright (C) 2017 Dylan Schacht
 ###
 ### By: Dylan Schacht (deadhead)
 ### Email: deadhead3492@gmail.com
-### Webpage: https://anarchylinux.org
+### Webpage: https://archer.sh
 ###
 ### Any questions, comments, or bug reports may be sent to above
 ### email address. Enjoy, and keep on using Arch.
@@ -54,11 +54,11 @@ reboot_system() {
                         umount -R "$ARCH"
                         reset ; exit
                 ;;
-                "$reboot2")	## Anarchy Chroot function
+                "$reboot2")	## Archer Chroot function
                         clear
                         echo -e "$arch_chroot_msg"
                         echo "/root" > /tmp/chroot_dir.var
-                        anarchy_chroot
+                        archer_chroot
                         clear
                 ;;
                 "$reboot3")	## Edit users
@@ -141,7 +141,7 @@ main_menu() {
                     fi
             ;;
             "$menu13")	## Start command line session
-                    echo -e "alias anarchy=exit ; echo -e '$return_msg'" > /tmp/.zshrc
+                    echo -e "alias archer=exit ; echo -e '$return_msg'" > /tmp/.zshrc
                     clear
                     ZDOTDIR=/tmp/ zsh
                     rm /tmp/.zshrc

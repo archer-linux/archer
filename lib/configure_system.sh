@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 ###############################################################
-### Anarchy Linux Install Script
+### Archer Linux Install Script
 ### configure_system.sh
 ###
 ### Copyright (C) 2017 Dylan Schacht
 ###
 ### By: Dylan Schacht (deadhead)
 ### Email: deadhead3492@gmail.com
-### Webpage: https://anarchylinux.org
+### Webpage: https://archer.sh
 ###
 ### Any questions, comments, or bug reports may be sent to above
 ### email address. Enjoy, and keep on using Arch.
@@ -186,15 +186,15 @@ configure_system() {
 
     if "$desktop"; then
         config_env &
-        pid=$! pri="0.1" msg="$wait_load \n\n \Z1> \Z2anarchy configure desktop\Zn" load
+        pid=$! pri="0.1" msg="$wait_load \n\n \Z1> \Z2archer configure desktop\Zn" load
 
         if [ "$DM" == "lightdm" ]; then
-            cp -r "${anarchy_directory}"/extra/desktop/lightdm/lightdm-gtk-greeter.conf "$ARCH"/etc/lightdm/
+            cp -r "${archer_directory}"/extra/desktop/lightdm/lightdm-gtk-greeter.conf "$ARCH"/etc/lightdm/
         fi
     fi
 
     #if "$add_repo" ; then
-        #echo -e "\n[anarchy]\nServer = $aa_repo\nSigLevel = Never" >> "$ARCH"/etc/pacman.conf
+        #echo -e "\n[archer]\nServer = $aa_repo\nSigLevel = Never" >> "$ARCH"/etc/pacman.conf
     #fi
 
     if "$multilib" ; then
@@ -205,7 +205,7 @@ configure_system() {
     fi
 
     if "$aa_repo" ; then
-        sed -i -e '$a\\n[anarchy]\nServer = https://anarchylinux.org/repo/$arch\nSigLevel = Never' "$ARCH"/etc/pacman.conf
+        sed -i -e '$a\\n[archer]\nServer = https://archer.sh/repo/$arch\nSigLevel = Never' "$ARCH"/etc/pacman.conf
     fi
 
     if "$dhcp" ; then
@@ -276,34 +276,34 @@ configure_system() {
         cp "$ARCH"/etc/skel/.bash_profile "$ARCH"/root/
     elif [ "$sh" == "/usr/bin/zsh" ]; then
         if [ "$shrc" == "$default" ]; then
-            cp "${anarchy_directory}"/extra/.zshrc "$ARCH"/root/.zshrc
-            cp "${anarchy_directory}"/extra/.zshrc "$ARCH"/etc/skel/.zshrc
+            cp "${archer_directory}"/extra/.zshrc "$ARCH"/root/.zshrc
+            cp "${archer_directory}"/extra/.zshrc "$ARCH"/etc/skel/.zshrc
         elif [ "$shrc" == "oh-my-zsh" ]; then
-            cp "${anarchy_directory}"/extra/.zshrc-oh-my "$ARCH"/root/.zshrc
-            cp "${anarchy_directory}"/extra/.zshrc-oh-my "$ARCH"/etc/skel/.zshrc
+            cp "${archer_directory}"/extra/.zshrc-oh-my "$ARCH"/root/.zshrc
+            cp "${archer_directory}"/extra/.zshrc-oh-my "$ARCH"/etc/skel/.zshrc
         elif [ "$shrc" == "grml-zsh-config" ]; then
-            cp "${anarchy_directory}"/extra/.zshrc-grml "$ARCH"/root/.zshrc
-            cp "${anarchy_directory}"/extra/.zshrc-grml "$ARCH"/etc/skel/.zshrc
+            cp "${archer_directory}"/extra/.zshrc-grml "$ARCH"/root/.zshrc
+            cp "${archer_directory}"/extra/.zshrc-grml "$ARCH"/etc/skel/.zshrc
         else
             touch "$ARCH"/root/.zshrc
             touch "$ARCH"/etc/skel/.zshrc
         fi
     elif [ "$shell" == "fish" ]; then
-        echo "exec fish" >> "${anarchy_directory}"/extra/.bashrc-root
-        echo "exec fish" >> "${anarchy_directory}"/extra/.bashrc
+        echo "exec fish" >> "${archer_directory}"/extra/.bashrc-root
+        echo "exec fish" >> "${archer_directory}"/extra/.bashrc
     elif [ "$shell" == "tcsh" ]; then
-        cp "${anarchy_directory}"/extra/{.tcshrc,.tcshrc.conf} "$ARCH"/root/
-        cp "${anarchy_directory}"/extra/{.tcshrc,.tcshrc.conf} "$ARCH"/etc/skel/
+        cp "${archer_directory}"/extra/{.tcshrc,.tcshrc.conf} "$ARCH"/root/
+        cp "${archer_directory}"/extra/{.tcshrc,.tcshrc.conf} "$ARCH"/etc/skel/
     elif [ "$shell" == "mksh" ]; then
-        cp "${anarchy_directory}"/extra/.mkshrc "$ARCH"/root/
-        cp "${anarchy_directory}"/extra/.mkshrc "$ARCH"/etc/skel/
+        cp "${archer_directory}"/extra/.mkshrc "$ARCH"/root/
+        cp "${archer_directory}"/extra/.mkshrc "$ARCH"/etc/skel/
     fi
 
-    cp "${anarchy_directory}"/extra/.bashrc-root "$ARCH"/root/.bashrc
-    cp "${anarchy_directory}"/extra/.bashrc "$ARCH"/etc/skel/
+    cp "${archer_directory}"/extra/.bashrc-root "$ARCH"/root/.bashrc
+    cp "${archer_directory}"/extra/.bashrc "$ARCH"/etc/skel/
     (cp /etc/lsb-release "$ARCH"/etc
     cp /etc/os-release "$ARCH"/etc
-    mv "$ARCH"/etc/arch-release "$ARCH"/etc/anarchy-release) &>/dev/null
+    mv "$ARCH"/etc/arch-release "$ARCH"/etc/archer-release) &>/dev/null
 
     sed -i 's/^#Color$/Color/' "$ARCH"/etc/pacman.conf
     sed -i 's/^#TotalDownload$/TotalDownload/' "$ARCH"/etc/pacman.conf

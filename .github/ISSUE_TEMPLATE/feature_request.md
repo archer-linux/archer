@@ -11,7 +11,7 @@ Write all your text below the comments or delete them if you want.
 
 ## Description
 
-<!-- Describe what feature you want included in Anarchy below. -->
+<!-- Describe what feature you want included in Archer below. -->
 
 ## Implementation
 

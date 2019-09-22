@@ -5,7 +5,7 @@
 <h2 align="center">Archer Linux</h2>
 
 <p align="center">
-    A simple and intuitive Arch Linux installer. Forked from <a href="https://github.com/deadhead420/anarchy-linux">Anarchy Linux</a>
+    A simple and intuitive Arch Linux installer. Forked from <a href="https://github.com/deadhead420/anarchy-linux">Archer Linux</a>
     <br>
     Archer: quick, easy, and straight forward, following the "Keep it simple stupid" principle.
 </p>
@@ -13,7 +13,7 @@
 <p align="center">
     <a href="https://archer.sh/">Home page</a> | 
     <a href="https://github.com/archer-linux/archer/releases">Download</a> |
-    <a href="https://t.me/anarchy_linux">Telegram group</a>
+    <a href="https://t.me/archer_linux">Telegram group</a>
 </p>
 </html>
 
@@ -57,11 +57,11 @@ About three main screenshots coming...
 
 #### Completely customized
 
-* Anarchy Cinnamon edition
-* Anarchy GNOME edition
-* Anarchy OpenboxWM edition
-* Anarchy XFCE edition
-* Anarchy Budgie edition
+* Archer Cinnamon edition
+* Archer GNOME edition
+* Archer OpenboxWM edition
+* Archer XFCE edition
+* Archer Budgie edition
 
 #### Not customized
 

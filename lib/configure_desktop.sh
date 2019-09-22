@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 ###############################################################
-### Anarchy Linux Install Script
+### Archer Linux Install Script
 ### configure_desktop.sh
 ###
 ### Copyright (C) 2017 Dylan Schacht
 ###
 ### By: Dylan Schacht (deadhead)
 ### Email: deadhead3492@gmail.com
-### Webpage: https://anarchylinux.org
+### Webpage: https://archer.sh
 ###
 ### Any questions, comments, or bug reports may be sent to above
 ### email address. Enjoy, and keep on using Arch.
@@ -37,11 +37,11 @@ graphics() {
             fi
         elif [ "$de" == "$customized_de" ]; then
             de=$(dialog --ok-button "$done_msg" --cancel-button "$back" --menu "$environment_msg" 15 60 5 \
-                "Anarchy-budgie"	"$de24" \
-                "Anarchy-cinnamon"     	"$de23" \
-                "Anarchy-gnome"		"$de22" \
-                "Anarchy-openbox"      	"$de18" \
-                "Anarchy-xfce4"       	"$de15" 3>&1 1>&2 2>&3)
+                "Archer-budgie"	"$de24" \
+                "Archer-cinnamon"     	"$de23" \
+                "Archer-gnome"		"$de22" \
+                "Archer-openbox"      	"$de18" \
+                "Archer-xfce4"       	"$de15" 3>&1 1>&2 2>&3)
 
             if [ -n "$de" ]; then
                 break
@@ -81,8 +81,8 @@ graphics() {
         fi
     done
 
-    if ! (</etc/pacman.conf grep "anarchy-local"); then
-        sed -i -e '$a\\n[anarchy-local]\nServer = file:///usr/share/anarchy/pkg\nSigLevel = Never' /etc/pacman.conf
+    if ! (</etc/pacman.conf grep "archer-local"); then
+        sed -i -e '$a\\n[archer-local]\nServer = file:///usr/share/archer/pkg\nSigLevel = Never' /etc/pacman.conf
     fi
 
     source "$lang_file"
@@ -90,23 +90,23 @@ graphics() {
     while read env
       do
         case "$env" in
-            "Anarchy-xfce4")	config_env="$env"
+            "Archer-xfce4")	config_env="$env"
                         start_term="exec startxfce4"
                         DE+="xfce4 xfce4-goodies $extras "
             ;;
-            "Anarchy-budgie")	config_env="$env"
+            "Archer-budgie")	config_env="$env"
                         start_term="export XDG_CURRENT_DESKTOP=Budgie:GNOME ; exec budgie-desktop"
                         DE+="budgie-desktop mousepad terminator nautilus gnome-backgrounds gnome-control-center $extras "
             ;;
-            "Anarchy-cinnamon")	config_env="$env"
+            "Archer-cinnamon")	config_env="$env"
                         DE+="cinnamon cinnamon-translations gnome-terminal file-roller p7zip zip unrar terminator $extras "
                         start_term="exec cinnamon-session"
             ;;
-            "Anarchy-gnome")	config_env="$env"
+            "Archer-gnome")	config_env="$env"
                         start_term="exec gnome-session"
                         DE+="gnome gnome-extra terminator $extras "
             ;;
-            "Anarchy-openbox")	config_env="$env"
+            "Archer-openbox")	config_env="$env"
                         start_term="exec openbox-session"
                         DE+="openbox thunar thunar-volman xfce4-terminal xfce4-panel xfce4-whiskermenu-plugin xcompmgr transset-df obconf lxappearance-obconf wmctrl gxmessage xfce4-pulseaudio-plugin xfdesktop xdotool opensnap ristretto oblogout obmenu-generator openbox-themes polkit-gnome tumbler $extras "
             ;;
@@ -269,7 +269,7 @@ graphics() {
             if [ "$?" -eq "0" ]; then
                 if [ "$GPU" == "$gr0" ]; then
                     pci_id=$(lspci -nn | grep "VGA" | egrep -o '\[.*\]' | awk '{print $NF}' | sed 's/.*://;s/]//')
-                    if (<"${anarchy_directory}"/etc/nvidia390.xx grep "$pci_id" &>/dev/null); then
+                    if (<"${archer_directory}"/etc/nvidia390.xx grep "$pci_id" &>/dev/null); then
                         if (dialog --yes-button "$yes" --no-button "$no" --yesno "\n$nvidia_390msg" 10 60); then
                             if [ "$kernel" == "lts" ]; then
                                 GPU="nvidia-390xx-lts"
@@ -279,7 +279,7 @@ graphics() {
                             GPU+=" nvidia-390xx-libgl nvidia-390xx-utils nvidia-settings"
                             break
                         fi
-                    elif (<"${anarchy_directory}"/etc/nvidia340.xx grep "$pci_id" &>/dev/null); then
+                    elif (<"${archer_directory}"/etc/nvidia340.xx grep "$pci_id" &>/dev/null); then
                                                  if (dialog --yes-button "$yes" --no-button "$no" --yesno "\n$nvidia_340msg" 10 60); then
                                                          if [ "$kernel" == "lts" ]; then
                                                                  GPU="nvidia-340xx-lts"
@@ -384,25 +384,25 @@ graphics() {
 
 config_env() {
 
-    cp -r "${anarchy_directory}"/extra/fonts/ttf-zekton-rg "$ARCH"/usr/share/fonts
+    cp -r "${archer_directory}"/extra/fonts/ttf-zekton-rg "$ARCH"/usr/share/fonts
     chmod -R 755 "$ARCH"/usr/share/fonts/ttf-zekton-rg
     arch-chroot "$ARCH" fc-cache -f
-    cp "${anarchy_directory}"/extra/fonts/unifont/unifont-11.0.02.ttf "$ARCH"/usr/share/fonts/TTF
-    cp "${anarchy_directory}"/extra/anarchy-icon.png "$ARCH"/root/.face
-    cp "${anarchy_directory}"/extra/anarchy-icon.png "$ARCH"/etc/skel/.face
-    cp "${anarchy_directory}"/extra/anarchy-icon.png "$ARCH"/usr/share/pixmaps
-    mkdir "$ARCH"/usr/share/backgrounds/anarchy
-    cp -r "${anarchy_directory}"/extra/wallpapers/* "$ARCH"/usr/share/backgrounds/anarchy/
+    cp "${archer_directory}"/extra/fonts/unifont/unifont-11.0.02.ttf "$ARCH"/usr/share/fonts/TTF
+    cp "${archer_directory}"/extra/archer-icon.png "$ARCH"/root/.face
+    cp "${archer_directory}"/extra/archer-icon.png "$ARCH"/etc/skel/.face
+    cp "${archer_directory}"/extra/archer-icon.png "$ARCH"/usr/share/pixmaps
+    mkdir "$ARCH"/usr/share/backgrounds/archer
+    cp -r "${archer_directory}"/extra/wallpapers/* "$ARCH"/usr/share/backgrounds/archer/
 
     if [ -n "$config_env" ]; then
-        tar -xf "${anarchy_directory}/extra/desktop/$config_env/config.tar.gz" -C "$ARCH"/root
-        tar -xf "${anarchy_directory}/extra/desktop/$config_env/config.tar.gz" -C "$ARCH"/etc/skel
+        tar -xf "${archer_directory}/extra/desktop/$config_env/config.tar.gz" -C "$ARCH"/root
+        tar -xf "${archer_directory}/extra/desktop/$config_env/config.tar.gz" -C "$ARCH"/etc/skel
     fi
 
     case "$config_env" in
-        "Anarchy-gnome"|"Anarchy-budgie")	cp -r "${anarchy_directory}/extra/desktop/Anarchy-gnome/gnome-backgrounds.xml" "$ARCH"/usr/share/gnome-background-properties
+        "Archer-gnome"|"Archer-budgie")	cp -r "${archer_directory}/extra/desktop/Archer-gnome/gnome-backgrounds.xml" "$ARCH"/usr/share/gnome-background-properties
         ;;
-        "Anarchy-openbox")	if [ "$virt" == "vbox" ]; then
+        "Archer-openbox")	if [ "$virt" == "vbox" ]; then
                         echo "VBoxClient-all &" >> "$ARCH"/etc/skel/.config/openbox/autostart
                         echo "VBoxClient-all &" >> "$ARCH"/root/.config/openbox/autostart
                     fi

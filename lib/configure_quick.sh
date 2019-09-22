@@ -3,7 +3,7 @@
 quick_install() {
 
     case "$install_opt" in
-        Anarchy-Desktop)    kernel="linux"
+        Archer-Desktop)    kernel="linux"
                             sh="/usr/bin/zsh"
                             shrc="$default"
                             bootloader="grub"
@@ -30,7 +30,7 @@ quick_install() {
                             quick_desktop
                             base_install+="$DE "
         ;;
-        Anarchy-Desktop-LTS)    kernel="linux-lts"
+        Archer-Desktop-LTS)    kernel="linux-lts"
                                 sh="/usr/bin/zsh"
                                 shrc="$default"
                                 bootloader="grub"
@@ -57,7 +57,7 @@ quick_install() {
                                 quick_desktop
                                 base_install+="$DE "
         ;;
-        Anarchy-Server)     kernel="linux"
+        Archer-Server)     kernel="linux"
                             sh="/usr/bin/zsh"
                             shrc="$default"
                             bootloader="grub"
@@ -80,7 +80,7 @@ quick_install() {
                                 base_install+="efibootmgr "
                             fi
         ;;
-        Anarchy-Server-LTS)     kernel="linux-lts"
+        Archer-Server-LTS)     kernel="linux-lts"
                                 sh="/usr/bin/zsh"
                                 shrc="$default"
                                 bootloader="grub"
@@ -111,11 +111,11 @@ quick_desktop() {
 
     while (true) ; do
         de=$(dialog --ok-button "$done_msg" --cancel-button "$cancel" --menu "$environment_msg" 14 60 5 \
-            "Anarchy-budgie"        "$de24" \
-            "Anarchy-cinnamon"      "$de23" \
-            "Anarchy-gnome"         "$de22" \
-            "Anarchy-openbox"       "$de18" \
-            "Anarchy-xfce4"         "$de15" 3>&1 1>&2 2>&3)
+            "Archer-budgie"        "$de24" \
+            "Archer-cinnamon"      "$de23" \
+            "Archer-gnome"         "$de22" \
+            "Archer-openbox"       "$de18" \
+            "Archer-xfce4"         "$de15" 3>&1 1>&2 2>&3)
 
         if [ -z "$de" ]; then
             if (dialog --yes-button "$yes" --no-button "$no" --yesno "\n$desktop_cancel_msg" 10 60) then
@@ -126,28 +126,28 @@ quick_desktop() {
         fi
     done
 
-    if ! (</etc/pacman.conf grep "anarchy-local"); then
-                 sed -i -e '$a\\n[anarchy-local]\nServer = file:///usr/share/anarchy/pkg\nSigLevel = Never' /etc/pacman.conf
+    if ! (</etc/pacman.conf grep "archer-local"); then
+                 sed -i -e '$a\\n[archer-local]\nServer = file:///usr/share/archer/pkg\nSigLevel = Never' /etc/pacman.conf
     fi
 
     case "$de" in
-        "Anarchy-xfce4")    config_env="$de"
+        "Archer-xfce4")    config_env="$de"
                             start_term="exec startxfce4"
                             DE+="xfce4 xfce4-goodies $extras "
         ;;
-        "Anarchy-budgie")       config_env="$de"
+        "Archer-budgie")       config_env="$de"
                                 start_term="export XDG_CURRENT_DESKTOP=Budgie:GNOME ; exec budgie-desktop"
                                 DE+="budgie-desktop mousepad terminator nautilus gnome-backgrounds gnome-control-center $extras "
         ;;
-        "Anarchy-cinnamon")     config_env="$de"
+        "Archer-cinnamon")     config_env="$de"
                                 DE+="cinnamon cinnamon-translations gnome-terminal file-roller p7zip zip unrar terminator $extras "
                                 start_term="exec cinnamon-session"
         ;;
-        "Anarchy-gnome")        config_env="$de"
+        "Archer-gnome")        config_env="$de"
                                 start_term="exec gnome-session"
                                 DE+="gnome gnome-extra terminator $extras "
         ;;
-        "Anarchy-openbox")      config_env="$de"
+        "Archer-openbox")      config_env="$de"
                                 start_term="exec openbox-session"
                                 DE+="openbox thunar thunar-volman xfce4-terminal xfce4-panel xfce4-whiskermenu-plugin xcompmgr transset-df obconf lxappearance-obconf wmctrl gxmessage xfce4-pulseaudio-plugin xfdesktop xdotool opensnap ristretto oblogout obmenu-generator polkit-gnome $extras "
         ;;

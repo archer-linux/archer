@@ -1,6 +1,6 @@
 # Contributing guide
 
-So you've decided to contribute to Anarchy Linux, that's great.
+So you've decided to contribute to Archer Linux, that's great.
 
 There's actually quite a few things you can do to help this project,
 so just pick the one that suits you best and start collaborating.
@@ -18,7 +18,7 @@ check out [devhints](https://devhints.io/)'s [bash cheatsheet](https://devhints.
 
 For beginners there are even more good news,
 we use `good first issue` and `help wanted` tags,
-so you can find some great issues you can help fix [right here](https://github.com/deadhead420/anarchy-linux/contribute).
+so you can find some great issues you can help fix [right here](https://github.com/archer-linux/archer/contribute).
 Of course you can help fix any issue, those are just the ones we recommend to new contributors.
 
 ### Style guide
@@ -39,20 +39,17 @@ visit [devhints.io](https://devhints.io/bash) to do so.
 Maybe you don't know how to code or don't want to contribute code.
 That's ok, we appreciate other kinds of help too.
 
-If you've found a typo in our readme or on [our website](https://github.com/deadhead420/anarchy-linux/tree/website-source),
+If you've found a typo in our readme or on [our website](https://github.com/archer-linux/archer/tree/website-source),
 you can always help fix it and submit a pull request.
-
-Our website is generated with [hugo](https://github.com/deadhead420/anarchy-linux/tree/website-source)
-and uses the [introdution theme](https://github.com/victoriadrake/hugo-theme-introduction).
 
 ## Translate the project
 
-Anarchy Linux, although a relatively simple project,
+Archer Linux, although a relatively simple project,
 still has a bunch of languages included, all of which need contributors.
 So if you see a language, which isn't 100% translated,
 or even think a different translation would be better,
 go right ahead, translate and submit a pull request,
-some Anarchy user will be very thankful for your work.
+some Archer user will be very thankful for your work.
 
 ## Test and report bugs
 
@@ -68,7 +65,7 @@ they might not get accepted.
 
 ## Conclusion
 
-You can easily see that there are a lot of options for you to contribute to Anarchy.
+You can easily see that there are a lot of options for you to contribute to Archer.
 Feel free to try any one of them, but please create an issue if you wish to add a big feature,
 so its inclusion can be discussed and your work won't be for nothing if it does not get included.
 

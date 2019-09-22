@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 ###############################################################
-### Anarchy Linux Install Script
+### Archer Linux Install Script
 ###
 ### Copyright (C) 2017 Dylan Schacht
 ###
 ### By: Dylan Schacht (deadhead)
 ### Email: deadhead3492@gmail.com
-### Webpage: https://anarchylinux.org
+### Webpage: https://archer.sh
 ###
 ### Any questions, comments, or bug reports may be sent to above
 ### email address. Enjoy, and keep on using Arch.
@@ -30,31 +30,31 @@
 
 init() {
 
-    if [[ $(basename "$0") = "anarchy" ]]; then
-        anarchy_directory="/usr/share/anarchy" # prev: aa_dir
-        anarchy_config="/etc/anarchy.conf" # prev: aa_conf
-        anarchy_scripts="/usr/lib/anarchy" # prev: aa_lib
+    if [[ $(basename "$0") = "archer" ]]; then
+        archer_directory="/usr/share/archer" # prev: aa_dir
+        archer_config="/etc/archer.conf" # prev: aa_conf
+        archer_scripts="/usr/lib/archer" # prev: aa_lib
     else
-        anarchy_directory=$(dirname "$(readlink -f "$0")") # Anarchy git repository
-        anarchy_config="${anarchy_directory}"/etc/anarchy.conf
-        anarchy_scripts="${anarchy_directory}"/lib
+        archer_directory=$(dirname "$(readlink -f "$0")") # Archer git repository
+        archer_config="${archer_directory}"/etc/archer.conf
+        archer_scripts="${archer_directory}"/lib
     fi
 
     trap '' 2
 
-    for script in "${anarchy_scripts}"/*.sh ; do
+    for script in "${archer_scripts}"/*.sh ; do
         [[ -e "${script}" ]] || break
-        # shellcheck source=/usr/lib/anarchy/*.sh
+        # shellcheck source=/usr/lib/archer/*.sh
         source "${script}"
     done
 
-    # shellcheck source=/etc/anarchy.conf
-    source "${anarchy_config}"
+    # shellcheck source=/etc/archer.conf
+    source "${archer_config}"
     language
-    # shellcheck source=/usr/share/anarchy/lang/
+    # shellcheck source=/usr/share/archer/lang/
     source "${lang_file}"
-    # shellcheck source=/etc/anarchy.conf
-    source "${anarchy_config}"
+    # shellcheck source=/etc/archer.conf
+    source "${archer_config}"
     export reload=true
 
 }
@@ -92,8 +92,8 @@ dialog() {
 }
 
 if [[ "$UID" -ne "0" ]]; then
-    echo "Error: anarchy requires root privilege"
-    echo "       Use: sudo anarchy"
+    echo "Error: archer requires root privilege"
+    echo "       Use: sudo archer"
     exit 1
 fi
 

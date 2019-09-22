@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 ###############################################################
-### Anarchy Linux Install Script
+### Archer Linux Install Script
 ### configure_base.sh
 ###
 ### Copyright (C) 2017 Dylan Schacht
 ###
 ### By: Dylan Schacht (deadhead)
 ### Email: deadhead3492@gmail.com
-### Webpage: https://anarchylinux.org
+### Webpage: https://archer.sh
 ###
 ### Any questions, comments, or bug reports may be sent to above
 ### email address. Enjoy, and keep on using Arch.
@@ -20,11 +20,11 @@ install_options() {
     op_title="$install_op_msg"
         while (true) ; do
                  install_opt=$(dialog --ok-button "$ok" --cancel-button "$cancel" --menu "$install_opt_msg" 16 80 5 \
-                         "Anarchy-Desktop"       "$install_opt1" \
-                         "Anarchy-Desktop-LTS"   "$install_opt2" \
-                         "Anarchy-Server"        "$install_opt3" \
-                         "Anarchy-Server-LTS"    "$install_opt4" \
-             "Anarchy-Advanced"      "$install_opt0" 3>&1 1>&2 2>&3)
+                         "Archer-Desktop"       "$install_opt1" \
+                         "Archer-Desktop-LTS"   "$install_opt2" \
+                         "Archer-Server"        "$install_opt3" \
+                         "Archer-Server-LTS"    "$install_opt4" \
+             "Archer-Advanced"      "$install_opt0" 3>&1 1>&2 2>&3)
                  if [ "$?" -gt "0" ]; then
                           if (dialog --defaultno --yes-button "$yes" --no-button "$no" --yesno "\n$exit_msg" 10 60) then
                                   main_menu
@@ -35,7 +35,7 @@ install_options() {
          done
 
          case "$install_opt" in
-                 Anarchy-Advanced)       prepare_base
+                 Archer-Advanced)       prepare_base
                                          graphics
                  ;;
                  *)                      quick_install
@@ -125,8 +125,8 @@ prepare_base() {
                                 sh="/usr/bin/$shell" shell="zsh zsh-syntax-highlighting"
 
                                 if [ "$shrc" == "oh-my-zsh" ]; then
-                                    if ! (grep "anarchy-local" </etc/pacman.conf &>/dev/null); then
-                                        sed -i -e '$a\\n[anarchy-local]\nServer = file:///usr/share/anarchy/pkg\nSigLevel = Never' /etc/pacman.conf
+                                    if ! (grep "archer-local" </etc/pacman.conf &>/dev/null); then
+                                        sed -i -e '$a\\n[archer-local]\nServer = file:///usr/share/archer/pkg\nSigLevel = Never' /etc/pacman.conf
                                     fi
                                     shell+=" oh-my-zsh-git"
                                 elif [ "$shrc" == "grml-zsh-config" ]; then
@@ -301,8 +301,8 @@ add_software() {
                     software_menu="$done_msg"
                 #elif [ "$software_menu" == "$aar" ] && ! "$aa_repo" ; then
                     #if (dialog --yes-button "$yes" --no-button "$no" --yesno "\n$aar_add_msg" 10 60) then
-                        #if ! (grep "\[anarchy\]" </etc/pacman.conf &>/dev/null); then
-                            #sed -i -e '$a\\n[anarchy]\nServer = https://anarchylinux.org/repo/$arch\nSigLevel = Never' /etc/pacman.conf
+                        #if ! (grep "\[archer\]" </etc/pacman.conf &>/dev/null); then
+                            #sed -i -e '$a\\n[archer]\nServer = https://archer.sh/repo/$arch\nSigLevel = Never' /etc/pacman.conf
                         #fi
                         #aa_repo=true
                     #else

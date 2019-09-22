@@ -12,7 +12,7 @@
 ###
 ### By: Dylan Schacht (deadhead) 
 ### Email: deadhead3492@gmail.com
-### Webpage: https://anarchylinux.org
+### Webpage: https://archer.sh
 ###
 ### By: MC - archer_dev
 ### Email: root@archer.sh

@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 ###############################################################
-### Anarchy Linux Install Script
-### anarchy-chroot.sh
+### Archer Linux Install Script
+### archer-chroot.sh
 ###
 ### Copyright (C) 2017 Dylan Schacht
 ###
 ### By: Dylan Schacht (deadhead)
 ### Email: deadhead3492@gmail.com
-### Webpage: https://anarchylinux.org
+### Webpage: https://archer.sh
 ###
 ### Any questions, comments, or bug reports may be sent to above
 ### email address. Enjoy, and keep on using Arch.
@@ -15,7 +15,7 @@
 ### License: GPL v2.0
 ###############################################################
 
-anarchy_chroot() {
+archer_chroot() {
 
     local char=
     local input=
@@ -69,7 +69,7 @@ anarchy_chroot() {
             fi
         done
 
-        if [ "$input" == "anarchy" ] || [ "$input" == "exit" ]; then
+        if [ "$input" == "archer" ] || [ "$input" == "exit" ]; then
             rm /tmp/chroot_dir.var &> /dev/null
             clear
             break
