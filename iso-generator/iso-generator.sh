@@ -286,7 +286,8 @@ configure_boot() {
 
 create_iso() {
     echo "Creating new Archer Linux image ..."
-    cd "${working_dir}" && mkdir build && cd build || exit
+    mkdir ~/archer/build
+    cd "${working_dir}" || exit
     xorriso -as mkisofs \
     -iso-level 3 \
     -full-iso9660-filenames \
@@ -298,7 +299,7 @@ create_iso() {
     -eltorito-alt-boot \
     -e EFI/archiso/efiboot.img \
     -no-emul-boot -isohybrid-gpt-basdat \
-    -output "${archer_iso_name}" \
+    -output ~/archer/build/"${archer_iso_name}" \
     "${custom_iso}"
 
     if [[ "$?" -eq "0" ]]; then
