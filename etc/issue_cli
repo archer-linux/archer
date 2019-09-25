@@ -1,18 +1,22 @@
 [H[2J
 [0;31m--------------------------------------------------------------------------------[0m
-       [1;32m/#\
-      [1;32m/###\  [0;32mWelcome to Archer Linux![0m
-     [1;32m/#####\[0;33m  The revolution starts here.
-    [1;32m/##[0;32m,-,##\
-   [0;32m/##(   )##\   [0;32mBased on: Arch Linux[0m
-  [0;32m/#.--   --.#\[0;33m   A simple, elegant, and lightweight linux distribution.
- [0;32m/`           `\[0m
+
+            .:'.
+             .ccc;..
+   ..         .cccccoc'.	  / \   _ __ ___| |__   ___ _ __ ___| |__
+   .cc:,.......''':ccodl,;'.	 / _ \ | '__/ __| '_ \ / _ \ '__/ __| '_ \
+    ;cccccccccccccccclolllcc;.  / ___ \| | | (__| | | |  __/ | _\__ \ | | |
+   .:;'.       '',:cclol;..    /_/   \_\_|  \___|_| |_|\___|_|(_)___/_| |_|
+              ;cccc:,'.
+             'c;'..
+            .'.^ 
+
 [0;31m--------------------------------------------------------------------------------[0m
-[0;31m |[0;33m Select an option or type '[0;32marcher[0;33m' to begin automated installer.           [0;31m|
+[0;31m |[0;33m Select an option or type '[0;32marcher[0;33m' to begin automated installer.           [0;31m |
 [0;31m |[0;33m Options:                                                                   [0;31m|
 [0;31m |			    	                                              |
 [0;31m |[0;33m 	1.[0;31m) [0;32mArcher Installer       - archer			              [0;31m|
-[0;31m |[0;33m 	2.[0;31m) [0;32mArcher Update          - archer -u			      [0;31m|
+[0;31m |[0;33m 	2.[0;31m) [0;32mArcher Update          - archer -u			      [0;31m        |
 [0;31m |[0;33m 	3.[0;31m) [0;32mConnection Test	    - iptest				      [0;31m|
 [0;31m |[0;33m 	4.[0;31m) [0;32mSystem Information      - sysinfo				      [0;31m|
 [0;31m |[0;33m 	5.[0;31m) [0;32mUpdate Mirrorlist       - fetchmirrors		      	      [0;31m|
